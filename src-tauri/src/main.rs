@@ -11,9 +11,9 @@ use std::{fs, io::Write};
 #[derive(Serialize, Deserialize, Debug)]
 struct Ticket {
     key: String,
-    groupName: String,
+    // groupName: String,
     contents: String,
-    itemType: String,
+    // itemType: String,
 }
 
 /**① 指定されたパスのファイル読み込み */
@@ -24,7 +24,19 @@ fn read_file(path: String) -> String {
 fn read_file_path() -> String {
     let tickets_file_path_key = "TICKETS_FILE_PATH";
     dotenv().ok();
-    env::var(tickets_file_path_key).unwrap()
+
+    match env::var(tickets_file_path_key) {
+        Ok(value) => {
+            println!("ok");
+            return value;
+        }
+        Err(_) => {
+            eprintln!("Error: Environment variable not found or invalid");
+            // デフォルトのパスなどを返すか、適切な対応を行う
+            // ここでは空文字列を返す例を示していますが、具体的な対応はプロジェクトの要件に応じて行ってください。
+            String::new()
+        }
+    }
 }
 
 /**② tauriのコマンド。ファイルの中身を改行で区切りVecにして返す。 */
