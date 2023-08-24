@@ -1,6 +1,5 @@
 import { DraggableItem } from "../types/item";
 import { useState, useCallback, useEffect } from "react";
-import { ItemTypes } from "../types/itemTypes";
 import { invoke } from "@tauri-apps/api";
 
 export const useTasks = (): [

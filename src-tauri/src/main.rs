@@ -3,7 +3,7 @@
     windows_subsystem = "windows"
 )]
 
-// use dotenvy::dotenv;
+use dotenvy::dotenv;
 use serde::{Deserialize, Serialize};
 use std::env;
 use std::{fs, io::Write};
@@ -23,8 +23,7 @@ fn read_file(path: String) -> String {
 
 fn read_file_path() -> String {
     let tickets_file_path_key = "TICKETS_FILE_PATH";
-    // dotenv().ok();
-    // Ok(env);
+    dotenv().ok();
     env::var(tickets_file_path_key).unwrap()
 }
 
