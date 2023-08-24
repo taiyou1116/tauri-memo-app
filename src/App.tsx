@@ -9,7 +9,6 @@ function App() {
   async function openDialog() {
     /**1. @tauri-apps/api/dialog#openで選択したファイルのパスを取得。 */
     const path = await open({ multiple: false });
-    console.log("着てる");
     if (typeof path === "string") {
       /**2. create_ticketコマンドを実行。String[]で受け取ったチケット一覧をセット。 */
       setTickets(await invoke<string[]>("create_ticket", { path: path })); 
