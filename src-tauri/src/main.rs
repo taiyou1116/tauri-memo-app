@@ -11,9 +11,9 @@ use std::{fs, io::Write};
 #[derive(Serialize, Deserialize, Debug)]
 struct Ticket {
     key: String,
-    // groupName: String,
+    groupName: String,
     contents: String,
-    // itemType: String,
+    itemType: String,
 }
 
 /**① 指定されたパスのファイル読み込み */
